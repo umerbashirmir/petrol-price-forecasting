@@ -70,7 +70,7 @@ petrol-price-forecasting/
 
 
 HOW TO RUN LOCALLY
-git clone   :  
+git clone   :  https://github.com/umerbashirmir/petrol-price-forecasting
 cd petrol-price-forecasting-api
 python -m venv .venv
 .\.venv\Scripts\activate
@@ -81,10 +81,10 @@ python main.py
 
 
 Author
-Abaas Nazir
-BA Economics, IGNOU
+Umer Bashir Mir
+BSC , IGNOU
 Data Science Enthusiast | Python | ML | Flask
  Kupwara, India
 
- Contact
-Email: abbasnazir912@gmail.com
+ Contact : 9682565815
+Email: meersam3331s@gmail.com
