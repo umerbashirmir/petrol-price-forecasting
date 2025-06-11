@@ -6,7 +6,7 @@ This is a Flask-based machine learning API that predicts petrol prices based on 
 
 ## Live Demo
 
- Try it now:  https://petrol-price-forecasting-api.onrender.com
+ Try it now:  https://petrol-price-forecasting.onrender.com
 
 ---
 
@@ -70,7 +70,7 @@ petrol-price-forecasting/
 
 
 HOW TO RUN LOCALLY
-git clone   :  https://github.com/Abbasnazir/petrol-price-forecasting-api.git
+git clone   :  
 cd petrol-price-forecasting-api
 python -m venv .venv
 .\.venv\Scripts\activate
