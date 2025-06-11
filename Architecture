@@ -1,0 +1,62 @@
+Overview:
+This project follows a lightweight but scalable architecture for building and deploying a machine learning model as a web API. The core system consists of a trained LightGBM model, a Flask-based API service, and cloud deployment using Render.
+
+ Architecture Flow:
+User Interaction:
+
+The user sends a POST request to the /predict API endpoint.
+
+The request includes JSON input containing:
+
+year
+
+month
+
+day
+
+weekday
+
+Flask API (Hosted on Render):
+
+The Flask web server receives the request.
+
+It handles routing (/ for status and /predict for predictions).
+
+Model Loading:
+
+On receiving a /predict request, the Flask app loads the trained LightGBM model using joblib from the models/ directory.
+
+Prediction Logic:
+
+The input data is converted into a Pandas DataFrame.
+
+The model performs the prediction using the provided date features.
+
+The predicted petrol price is rounded and formatted.
+
+Response:
+
+The prediction is returned as a JSON response:
+{
+  "predicted_price": 74.56
+}
+ Deployment:
+The application is deployed on Render.com.
+
+main.py runs the Flask server and binds to 0.0.0.0 and a dynamic PORT provided by Render.
+
+Dependencies are managed using requirements.txt.
+
+The service is continuously available via a public Render URL.
+
+ Tools & Technologies Used:
+Layer	Tool / Library
+ML Model	LightGBM, scikit-learn
+Backend	Flask
+Deployment	Render
+Data Handling	Pandas, Joblib
+Testing	Postman / Thunder Client
+
+Final Note:
+This architecture enables the model to be consumed easily via web requests, making it ideal for real-time integration into dashboards, frontend UIs (like Streamlit), or other software systems.
+

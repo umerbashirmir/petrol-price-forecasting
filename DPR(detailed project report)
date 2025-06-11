@@ -1,0 +1,148 @@
+ Project Title
+Petrol Price Forecasting Using Machine Learning and Flask API
+
+ 2. Objective
+The goal of this project is to forecast petrol prices using historical date-based patterns. The predictions are exposed via a web API built with Flask, enabling programmatic access to the model for integration into dashboards, websites, or other services.
+
+3. Dataset Description
+Source: Provided in .csv format (train, test, and sample submission files)
+
+Fields Used:
+
+Date (converted to: year, month, day, weekday)
+
+Petrol (USD) (target)
+
+ 4. Data Preprocessing
+Converted Date column to datetime type
+
+Extracted:
+
+Year
+
+Month
+
+Day
+
+Weekday
+
+Handled missing values using .dropna()
+
+Saved the cleaned dataset to data/processed/cleaned_train.csv
+
+5. Model Building
+Algorithm Used: LightGBM Regressor
+
+Libraries: scikit-learn, lightgbm, pandas, joblib
+
+Trained the model on features: year, month, day, weekday
+
+Evaluated using RMSE
+
+Saved the final trained model to:
+
+
+models/best_model.pkl
+🧪 6. Model Evaluation
+Metric Used: RMSE (Root Mean Squared Error)
+
+Model Selected: LightGBM (performed better than Linear Regression and Random Forest)
+
+Provided good generalization on test set
+
+ 7. Tech Stack
+Layer	Tool / Library
+Data Handling	Pandas
+ML Model	LightGBM, scikit-learn
+Model Saving	joblib
+API Framework	Flask
+API Testing	Postman, Thunder Client
+Deployment	Render
+(Optional UI)	Streamlit (for frontend)
+
+8. API Development
+Created Flask-based API with routes:
+
+GET / → API status check
+
+POST /predict → returns petrol price prediction
+
+Model loaded on API start via joblib.load()
+
+Input accepted in JSON format
+
+Output returned as JSON
+
+ 9. Project Structure
+
+petrol-price-forecasting/
+├── app/
+│   ├── __init__.py
+│   └── routes.py
+├── models/
+│   └── best_model.pkl
+├── main.py
+├── requirements.txt
+├── Procfile
+├── render.yaml
+├── README.md
+├── HLD.md
+├── LLD.md
+
+
+10. Deployment
+Deployed the Flask API using Render.com
+
+Flask port binding: 0.0.0.0 with PORT env var
+
+Successfully hosted and tested API publicly
+
+ 11. API Testing (Live)
+Tested using Postman & Thunder Client
+
+POST request to /predict
+
+
+Input JSON:
+{
+  "year": 2025,
+  "month": 6,
+  "day": 10,
+  "weekday": 0
+}
+
+
+Response:
+{
+  "predicted_price": 74.56
+}
+
+12. Architecture
+User → API Request → Flask App → Load Model → Predict → Return JSON Response
+User sends POST request
+
+API processes request
+
+Model makes prediction
+
+Response sent back
+
+ 
+13. Final Output Example
+
+{
+  "predicted_price": 74.56
+}
+👨‍💻 15. Author Info
+Name: Abaas Nazir
+
+Education: BA in Economics, IGNOU
+
+Location: Kupwara, India
+
+Email: abbasnazir912@gmail.com
+
+
+ 16. Conclusion
+This project demonstrates the complete machine learning lifecycle — from data preprocessing to model building, API development, testing, and deployment. The solution is scalable and can be extended with a frontend or CI/CD pipeline.
+

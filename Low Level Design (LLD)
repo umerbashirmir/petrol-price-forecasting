@@ -1,0 +1,116 @@
+Purpose : shows detailed structure functions  , routes  , input/output formats , folder level design. 
+
+LOw_ level Design(LLd) : petrol price forecasting API 
+
+petrol-price-forecasting/ ├── app/ │   ├── init.py       # API factory + blueprint registration │  
+└── routes.py         # Defines routes and logic ├── models/ │   
+└── best_model.pkl    # Saved LightGBM model 
+├── main.py               # App startup code 
+├── requirements.txt      # Dependencies 
+├── Procfile              # Tells Render how to run the app 
+├── render.yaml           # Optional Render deployment config 
+├── README.md             # Project overview
+
+---
+
+## Route Breakdown
+
+###  GET /
+
+- Purpose: Test if API is live
+- Returns:
+`json
+{
+  "message": "Petrol Price Prediction API is running!"
+}
+
+## Post predict 
+- Purpose : Get  Predicted petrol price 
+-input json
+{
+  "year": 2025,
+  "month": 6,
+  "day": 10,
+  "weekday": 0
+}
+
+## Output json
+{
+  "predicted_price": 75.23
+}
+
+Function Flow:
+
+a. Receive POST request
+
+b. Convert JSON to Pandas DataFrame
+
+c. Load best_model.pkl from /models/
+
+d. Call model.predict()
+
+e. Return result as JSON
+
+Error Handling
+
+If required fields are missing:
+
+
+{
+  "error": "Missing key: 'month'"
+}
+
+If unexpected input format:
+
+
+{
+  "error": "Input must be a valid JSON"
+}
+
+
+---
+
+🔧 Deployment Configuration
+
+main.py uses:
+
+
+port = int(os.environ.get("PORT", 5000))
+app.run(host='0.0.0.0', port=port)
+
+Procfile
+
+
+web: python main.py
+
+render.yaml
+
+
+services:
+  - type: web
+    name: petrol-price-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+
+
+---
+
+Testing
+
+Postman / Thunder Client to test /predict
+
+Works live on:   https://petrol-price-forecasting-api.onrender.com
+
+
+
+---
+
+ Summary
+
+This Flask API loads a trained machine learning model to predict petrol prices based on a date input. The architecture is lightweight, production-ready, and fully deployed on Render.
+
+
+
+
+

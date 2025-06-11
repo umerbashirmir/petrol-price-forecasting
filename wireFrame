@@ -1,0 +1,47 @@
+Purpose of the Wireframe:
+This wireframe represents a simple visual frontend layout for a Petrol Price Prediction app (optional) that interacts with the backend Flask API.
+
+While the current project uses a backend-only API, this wireframe shows how a user-friendly interface (e.g., using Streamlit or HTML) would look.
+
+ Wireframe Layout (UI Structure):
+
+ Petrol Price Forecasting App         
+
+                                              
+Select Date:                             
+[ Year  ]  [ Month  ]  [ Day  ]            
+                                              
+Weekday (optional):                      
+[ Dropdown: Monday - Sunday ]             
+                                              
+[ Predict Price ]                        
+                                              
+Predicted Petrol Price: ₹ [ 74.56 ]     
+                                              
+
+ Wireframe Elements Explained:
+Element	Description
+Title/Header	Displays app name clearly at the top
+Date Input	Year, month, day selection (numeric or calendar widgets)
+Weekday Dropdown	Optional dropdown to select the day of week
+Predict Button	Sends the request to /predict route in Flask API
+Output Box	Displays predicted petrol price in a clean format
+
+ User Interaction Flow:
+User selects a date (year, month, day)
+
+Optionally selects the weekday
+
+Clicks on Predict Price
+
+The form sends a POST request to the Flask API (/predict)
+
+API returns the petrol price → shown to the user in a readable box
+
+🛠 Optional Tools to Build This UI:
+Streamlit (simple and fast)
+
+Flask + HTML/CSS (more customization)
+
+Gradio (easy integration for ML models)
+
